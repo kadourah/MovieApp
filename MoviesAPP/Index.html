@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <style ></style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.auth0.com/js/auth0/9.3.1/auth0.min.js"></script>
+    <script src="../Scripts/jquery-3.3.1.min.js" type="text/javascript"></script>
+    
+    <script src="Scripts/App.js"></script>
+    <script src="../Scripts/auth0-variables.js"></script>
+   
+    <div class="content">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Auth0 - Scoped Calls with Web API</a>
+                    <button id="btn-home-view" class="btn btn-primary btn-margin">
+                        Home
+                    </button>
+                    <button id="btn-profile-view" class="btn btn-primary btn-margin">
+                        Profile
+                    </button>
+                    <button id="btn-ping-view" class="btn btn-primary btn-margin">
+                        Make Scoped Calls
+                    </button>
+                   
+                    <button id="qsLoginBtn" class="btn btn-primary btn-margin">
+                        Log In
+                    </button>
+                    <button id="qsLogoutBtn" class="btn btn-primary btn-margin">
+                        Log Out
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <main class="container">
+            <!-- home view -->
+            <div id="home-view">
+                <h4></h4>
+            </div>
+            <!-- profile view -->
+            <div id="profile-view" class="panel panel-default profile-area">
+                <div class="panel-heading"><h3>Profile</h3></div>
+                <div class="panel-body">
+                    <img class="avatar" alt="avatar">
+                    <div>
+                        <label><i class="glyphicon glyphicon-user"></i> Nickname</label>
+                        <h3 class="nickname"></h3>
+                    </div>
+                    <pre class="full-profile"></pre>
+                </div>
+            </div>
+            <!-- ping view -->
+            <div id="ping-view">
+                <h1>Make a Call to the Server</h1>
+                <p id="call-private-message">
+                    Log in to call a private (secured) server endpoint.
+                </p>
+                
+                <button id="btn-get-movies" class="btn btn-primary">
+                    Get Movies 
+                </button>
+                <h2 id="ping-message"></h2>
+                
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h2>Get (GET) All Rows</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <table id="movieTable"
+                                       class="table table-bordered table-condensed table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Name</th>
+                                            <th>Date</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <button type="button" id="addButton"
+                                        class="btn btn-primary"
+                                        onclick="addClick();">
+                                    Add Movie
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        Movie Information
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <label for="movieName">
+                                                 Name
+                                            </label>
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="movieName" />
+                                        </div>
+                                       
+                                        
+                                    </div>
+                                    <div class="panel-footer">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <button type="button" id="btn-update-movie"
+                                                        class="btn btn-primary"
+                                                        >
+                                                    Add
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+            </div>
+            <!-- admin view -->
+            <div id="admin-view">
+                <h2>You are an Admin!</h2>
+                <p>Only users who have a <code>scope</code> of <code>write:messages</code> in their <code>access_token</code> can see this area.</p>
+                <hr>
+                <h3>Call an Admin endpoint</h3>
+                <button id="btn-ping-admin" class="btn btn-primary">
+                    Post a Message
+                </button>
+                <h2 id="admin-message"></h2>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
